@@ -1,0 +1,303 @@
+{
+	"info": {
+		"_postman_id": "5ab672cf-5d77-444c-b243-26bd200fb708",
+		"name": "API_LIC01T",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38324080"
+	},
+	"item": [
+		{
+			"name": "Caso de prueba 1: Verificar el registro de usuario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var template = `\r",
+							"<style type=\"text/css\">\r",
+							"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #ffc2f3;border-collapse: collapse;}\r",
+							"    .tftable th {font-size:18px;background-color:#ffc2f3;border-width: 1px;padding: 8px;border-style: solid;border-color: #ffc2f3;text-align:left;}\r",
+							"    .tftable tr {background-color:#ffffff;}\r",
+							"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #ffc2f3;}\r",
+							"    .tftable tr:hover {background-color:#87ceeb;}\r",
+							"</style>\r",
+							"\r",
+							"<table class=\"tftable\" border=\"1\">\r",
+							"    <tr>\r",
+							"        <th>Username</th>\r",
+							"        <th>Email</th>\r",
+							"        <th>Password</th>\r",
+							"        <th>ID</th>\r",
+							"        <th>__v</th>\r",
+							"    </tr>\r",
+							"    <tr>\r",
+							"        <td>{{response.user.username}}</td>\r",
+							"        <td>{{response.user.email}}</td>\r",
+							"        <td>{{response.user.password}}</td>\r",
+							"        <td>{{response.user._id}}</td>\r",
+							"        <td>{{response.user.__v}}</td>\r",
+							"    </tr>\r",
+							"</table>\r",
+							"`;\r",
+							"\r",
+							"function constructVisualizerPayload() {\r",
+							"    return {response: pm.response.json()}\r",
+							"}\r",
+							"\r",
+							"pm.visualizer.set(template, constructVisualizerPayload());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Ne_Valencia\",\r\n    \"email\": \"Ne_Valencia@ejemplo.com\",\r\n    \"password\": \"password_seguroLIC01T\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"register"
+					]
+				},
+				"description": "- **Descripción**: Verificar que un usuario pueda registrarse correctamente\n    \n- **Método**: POST\n    \n- **Endpoint**: /api/register\n    \n- **Verificación**:\n    \n\n1. Enviar una solicitud POST con los datos del nuevo usuario.\n    \n2. Verificar que la respuesta tenga un código de estado 201 (Creado).\n    \n3. Verificar que la respuesta contenga un mensaje de éxito o los datos del usuario registrado.\n    \n\n- **Posibles Errores**:\n    \n\n1. Respuesta con código 400 (Bad Request) si faltan campos obligatorios.\n    \n2. Respuesta con código 409 (Conflict) si el nombre de usuario o correo electrónico ya existe."
+			},
+			"response": []
+		},
+		{
+			"name": "Caso de prueba 2: Verificar el inicio de sesión de usuario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var template = `\r",
+							"<style type=\"text/css\">\r",
+							"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+							"    .tftable th {font-size:18px;background-color:#ffc2f3;border-width: 1px;padding: 8px;border-style: solid;border-color: #ffc2f3;text-align:left;}\r",
+							"    .tftable tr {background-color:#ffffff;}\r",
+							"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #ffc2f3;}\r",
+							"    .tftable tr:hover {background-color:#87ceeb;}\r",
+							"</style>\r",
+							"\r",
+							"<table class=\"tftable\" border=\"1\">\r",
+							"    <tr>\r",
+							"        <th>Token</th>\r",
+							"    </tr>\r",
+							"    <tr>\r",
+							"        <td>{{response.token}}</td>\r",
+							"    </tr>\r",
+							"</table>\r",
+							"`;\r",
+							"\r",
+							"function constructVisualizerPayload() {\r",
+							"    return {response: pm.response.json()}\r",
+							"}\r",
+							"\r",
+							"pm.visualizer.set(template, constructVisualizerPayload());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Ne_Valencia\",\r\n    \"password\": \"password_seguroLIC01T\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"login"
+					]
+				},
+				"description": "- **Descripción**: Verificar que un usuario pueda iniciar sesión correctamente.\n    \n- **Método**: POST\n    \n- **Endpoint**: /api/login\n    \n- **Verificación**:\n    \n\n1. Enviar una solicitud POST con las credenciales del usuario.\n    \n2. Verificar que la respuesta tenga un código de estado 200 (OK).\n    \n3. Verificar que la respuesta contenga un token de autenticación.\n    \n\n- **Posibles Errores**:\n    \n\n1. Respuesta con código `401 (Unauthorized)` si las credenciales son incorrectas."
+			},
+			"response": []
+		},
+		{
+			"name": "Caso de prueba 3: Verificar el acceso a un recurso protegido con autenticación",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var template = `\r",
+							"<style type=\"text/css\">\r",
+							"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: ##ffc2f3;border-collapse: collapse;}\r",
+							"    .tftable th {font-size:18px;background-color:#ffc2f3;border-width: 1px;padding: 8px;border-style: solid;border-color: #ffc2f3;text-align:left;}\r",
+							"    .tftable tr {background-color:#ffffff;}\r",
+							"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #ffc2f3;}\r",
+							"    .tftable tr:hover {background-color:#87ceeb;}\r",
+							"</style>\r",
+							"\r",
+							"<table class=\"tftable\" border=\"1\">\r",
+							"    <tr>\r",
+							"        <th>Message</th>\r",
+							"    </tr>\r",
+							"    <tr>\r",
+							"        <td>{{response.message}}</td>\r",
+							"    </tr>\r",
+							"</table>\r",
+							"`;\r",
+							"\r",
+							"function constructVisualizerPayload() {\r",
+							"    return { response: pm.response.json() }\r",
+							"}\r",
+							"\r",
+							"pm.visualizer.set(template, constructVisualizerPayload());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZTNmMzY0OWRiNDdkN2U4ZjZlYmNmMSIsImlhdCI6MTcyNjIxNTAyNiwiZXhwIjoxNzI2MjE4NjI2fQ.enbz0s_pTRBB7MelMAIgOrz7G3q33PySyTCzJQq8mZY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer <eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZTNlN2E0NzIzMDc1YjQ1MGNmMzMyMSIsImlhdCI6MTcyNjIxMzE2OCwiZXhwIjoxNzI2MjE2NzY4fQ.lKhMaFEkWM-bTOUb9T18nu07UgvHkicKQIMNegu8Bg8>",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/protected-resource",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"protected-resource"
+					]
+				},
+				"description": "- **Descripción**: Verificar que solo los usuarios autenticados puedan acceder a un recurso protegido.\n    \n- **Método**: GET\n    \n- **Endpoint**: /api/protected-resource\n    \n- **Verificación**:\n    \n\n1. Enviar una solicitud GET con un token de autenticación válido.\n    \n2. Verificar que la respuesta tenga un código de estado 200 (OK).\n    \n3. Verificar que la respuesta contenga los datos del recurso protegido.\n    \n\n- **Posibles Errores**:\n    \n\n1. Respuesta con código 401 (Unauthorized) si el token es inválido o ha expirado.EndFragment"
+			},
+			"response": []
+		},
+		{
+			"name": "Caso de prueba 4: Verificar el cierre de sesión de usuario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var template = `\r",
+							"<style type=\"text/css\">\r",
+							"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+							"    .tftable th {font-size:18px;background-color:#ffc2f3;border-width: 1px;padding: 8px;border-style: solid;border-color: #ffc2f3;text-align:left;}\r",
+							"    .tftable tr {background-color:#ffffff;}\r",
+							"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #ffc2f3;}\r",
+							"    .tftable tr:hover {background-color:#87ceeb;}\r",
+							"</style>\r",
+							"\r",
+							"<table class=\"tftable\" border=\"1\">\r",
+							"    <tr>\r",
+							"        <th>Message</th>\r",
+							"    </tr>\r",
+							"    <tr>\r",
+							"        <td>{{response.message}}</td>\r",
+							"    </tr>\r",
+							"</table>\r",
+							"`;\r",
+							"\r",
+							"function constructVisualizerPayload() {\r",
+							"    return {response: pm.response.json()}\r",
+							"}\r",
+							"\r",
+							"pm.visualizer.set(template, constructVisualizerPayload());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZTNmMzY0OWRiNDdkN2U4ZjZlYmNmMSIsImlhdCI6MTcyNjIxNTAyNiwiZXhwIjoxNzI2MjE4NjI2fQ.enbz0s_pTRBB7MelMAIgOrz7G3q33PySyTCzJQq8mZY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"logout"
+					]
+				},
+				"description": "- **Descripción**: Verificar que un usuario pueda cerrar sesión correctamente.\n    \n- **Método**: POST\n    \n- **Endpoint**: /api/logout\n    \n- **Verificación**:\n    \n\n1. Enviar una solicitud POST con el token de autenticación.\n    \n2. Verificar que la respuesta tenga un código de estado 200 (OK).\n    \n3. Verificar que el token de autenticación ya no sea válido para futuras solicitudes.\n    \n\n- **Posibles Errores**:\n    \n\n1. Respuesta con código 401 (Unauthorized) si el token es inválido o ya ha sido invalidado previamente."
+			},
+			"response": []
+		}
+	]
+}
