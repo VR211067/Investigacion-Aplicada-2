@@ -1,0 +1,91 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff; /* Fondo celeste claro */
+    margin: 0;
+    padding: 20px;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #ff6f91; /* Rosa suave */
+    margin-bottom: 20px;
+}
+
+form {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px auto;
+    width: 320px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #ff6f91; /* Rosa suave */
+}
+
+input[type="text"], 
+input[type="email"], 
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ff6f91; /* Borde rosa suave */
+    border-radius: 8px;
+    box-sizing: border-box;
+    background-color: #fff0f5; /* Blanco con un toque de rosa */
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color:#ff3b70; /* Botón rosa */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #ff3b70; /* Rosa más oscuro al hacer hover */
+}
+
+#protectedButton {
+    background-color: #87cefa; /* Celeste */
+}
+
+#protectedButton:hover {
+    background-color: #4682b4; /* Azul más oscuro al hacer hover */
+}
+
+#protectedMessage {
+    text-align: center;
+    font-size: 18px;
+    color: #87cefa; /* Celeste */
+    margin-top: 20px;
+}
+
+p {
+    font-size: 16px;
+    color: #333;
+}
+
+.hidden {
+    display: none;
+}
+
+.view {
+    margin-top: 20px;
+}
+
+/* Espaciado superior en botones */
+button {
+    margin-top: 10px;
+}
