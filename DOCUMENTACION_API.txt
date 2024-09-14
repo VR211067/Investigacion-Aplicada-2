@@ -1,0 +1,81 @@
+DOCUMENTACIÓN
+
+Caso de prueba 1: Verificar el registro de usuario
+Descripción: Verificar que un usuario pueda registrarse correctamente.
+Método: POST
+Endpoint: /api/register
+Cuerpo de la solicitud:
+json
+
+{
+  "username": "nuevo_usuario",
+  "password": "password_seguro",
+  "email": "correo@ejemplo.com"
+}
+Verificación:
+Enviar una solicitud POST con los datos del nuevo usuario.
+Verificar que la respuesta tenga un código de estado 201 (Creado).
+Verificar que la respuesta contenga un mensaje de éxito o los datos del usuario registrado.
+Posibles Errores:
+Respuesta con código 400 (Bad Request) si faltan campos obligatorios.
+Respuesta con código 409 (Conflict) si el nombre de usuario o correo electrónico ya existe.
+
+
+
+Caso de prueba 2: Verificar el inicio de sesión de usuario
+Descripción: Verificar que un usuario pueda iniciar sesión correctamente.
+Método: POST
+Endpoint: /api/login
+Cuerpo de la solicitud:
+json
+
+{
+  "username": "usuario_existente",
+  "password": "password_correcto"
+}
+Verificación:
+Enviar una solicitud POST con las credenciales del usuario.
+Verificar que la respuesta tenga un código de estado 200 (OK).
+Verificar que la respuesta contenga un token de autenticación.
+Posibles Errores:
+Respuesta con código 401 (Unauthorized) si las credenciales son incorrectas.
+
+
+
+
+Caso de prueba 3: Verificar el acceso a un recurso protegido con autenticación
+Descripción: Verificar que solo los usuarios autenticados puedan acceder a un recurso protegido.
+Método: GET
+Endpoint: /api/protected-resource
+Encabezado de la solicitud:
+json
+
+{
+  "Authorization": "Bearer token_valido"
+}
+Verificación:
+Enviar una solicitud GET con un token de autenticación válido.
+Verificar que la respuesta tenga un código de estado 200 (OK).
+Verificar que la respuesta contenga los datos del recurso protegido.
+Posibles Errores:
+Respuesta con código 401 (Unauthorized) si el token es inválido o ha expirado.
+
+
+
+
+Caso de prueba 4: Verificar el cierre de sesión de usuario
+Descripción: Verificar que un usuario pueda cerrar sesión correctamente.
+Método: POST
+Endpoint: /api/logout
+Encabezado de la solicitud:
+json
+
+{
+  "Authorization": "Bearer token_valido"
+}
+Verificación:
+Enviar una solicitud POST con el token de autenticación.
+Verificar que la respuesta tenga un código de estado 200 (OK).
+Verificar que el token de autenticación ya no sea válido para futuras solicitudes.
+Posibles Errores:
+Respuesta con código 401 (Unauthorized) si el token es inválido o ya ha sido invalidado previamente.
