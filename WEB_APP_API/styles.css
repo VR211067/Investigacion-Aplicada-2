@@ -75,6 +75,7 @@ button:hover {
 p {
     font-size: 16px;
     color: #333;
+    text-align: center;
 }
 
 .hidden {
@@ -88,4 +89,13 @@ p {
 /* Espaciado superior en botones */
 button {
     margin-top: 10px;
+}
+footer {
+
+    text-align: center;
+    color: black; 
+
+}
+#foot{
+    font-size: 20px;
 }
